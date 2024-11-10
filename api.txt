@@ -1,0 +1,112 @@
+'vzp', 'plat', 'investice', 'polovicni_uvazek', 'bonus',            kategorie pro prijem
+
+'nakupovani', 'jidlo', 'telefon', 'zabava', 'vzdelani',             kategorie pro vydaj
+'krasa', 'sport', 'socialni', 'doprava', 'obleceni', 'auto',
+'alkohol', 'cigarety', 'elektronika', 'cestovani', 'zdravi',
+'domaci_mazlicek', 'opravy', 'bydleni', 'domov', 'darky',
+'dary', 'loterie', 'svaciny', 'deti', 'zelenina', 'ovoce',
+
+'ostatni'
+
+--------------------------------------------------------------------------------------
+/api/new_record
+    {
+        "amount": 100,      Kladny = prijem, zaporny = vydaj (povinny)
+        "category": "plat",     default je "ostatni" (volitelny) 
+        "date": "2024-01-01",   default je aktualni datum (volitelny)
+        "description": "popisek"    (volitelny)
+    }
+
+--------------------------------------------------------------------------------------
+/api/edit_record
+    {
+        "id": "6730b61232da22ff55f920f0",        id zaznamu, jediny povinny udaj
+        "amount": 100,
+        "category": "plat",
+        "date": "2024-01-01",
+        "description": "popisek"
+    }
+
+--------------------------------------------------------------------------------------
+/api/delete_record
+    {
+        "id": "6730b61232da22ff55f920f0"    (povinny)
+    }
+
+--------------------------------------------------------------------------------------
+/api/get_records
+    {
+        "start_date": "2023"    oboje volitelne
+        "end_date": "2024"
+    }
+Vraci:
+    [{
+        "_id": "6730b7025f52f4d607b2e866",
+        "amount": 1000,
+        "category": "ostatni",
+        "date": "2024-11-10T13:37:06.509Z",
+        "description": "idk neco new",
+        "__v": 0
+    }]
+
+--------------------------------------------------------------------------------------
+/api/get_record_count_by_category
+    {
+        "start_date": "2023"    oboje volitelne
+        "end_date": "2024"
+    }
+Vraci:
+    [{
+        "categories": [{
+            "category": "ostatni",      kategorie
+            "count": 1,                 pocet zaznamu v kategorii
+            "total_amount": -500        soucet penez v kategorii
+        }],
+        "type": "expense"           typ je vydaj
+    }, {
+        "categories": [{
+            "category": "bydleni",      kategorie  
+            "count": 1,                 pocet zaznamu v kategorii
+            "total_amount": 100          soucet penez v kategorii
+        }, {
+            "category": "ostatni",      kategorie
+            "count": 1,                 pocet zaznamu v kategorii
+            "total_amount": 1000         soucet penez v kategorii
+        }],
+        "type": "income"            typ je prijem
+    }]
+
+--------------------------------------------------------------------------------------
+/api/get_income
+    {
+        "start_date": "2023"    oboje volitelne
+        "end_date": "2024"
+    }
+Vraci:
+    {
+        "total_income": 1100    celkovy soucet prijmu za obdobi
+    }
+
+--------------------------------------------------------------------------------------
+/api/get_expense
+    {
+        "start_date": "2023"    oboje volitelne
+        "end_date": "2024"
+    }
+Vraci:
+    {
+        "total_expense": -500    celkovy soucet vydaju za obdobi
+    }
+
+--------------------------------------------------------------------------------------
+/api/get_balance
+    {
+        "start_date": "2023"    oboje volitelne
+        "end_date": "2024"
+    }
+Vraci:
+    {
+        "total_balance": 500    celkovy vysledek na uctu za obdobi
+    }
+
+--------------------------------------------------------------------------------------
