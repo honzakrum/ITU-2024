@@ -56,25 +56,45 @@ Vraci:
         "end_date": "2024"
     }
 Vraci:
-    [{
-        "categories": [{
-            "category": "ostatni",      kategorie
-            "count": 1,                 pocet zaznamu v kategorii
-            "total_amount": -500        soucet penez v kategorii
-        }],
-        "type": "expense"           typ je vydaj
-    }, {
-        "categories": [{
-            "category": "bydleni",      kategorie  
-            "count": 1,                 pocet zaznamu v kategorii
-            "total_amount": 100          soucet penez v kategorii
-        }, {
-            "category": "ostatni",      kategorie
-            "count": 1,                 pocet zaznamu v kategorii
-            "total_amount": 1000         soucet penez v kategorii
-        }],
-        "type": "income"            typ je prijem
-    }]
+    [
+      {
+        "type": 1,  // 1 income
+        "categories": [
+          {
+            "categoryId": "category_id_1",
+            "categoryName": "Salary",
+            "type": 1,  // Income
+            "count": 10,
+            "totalAmount": 5000
+          },
+          {
+            "categoryId": "category_id_2",
+            "categoryName": "Freelancing",
+            "type": 1,  // Income
+            "count": 5,
+            "totalAmount": 2000
+          }
+        ]
+      },
+      {
+        "type": 0,  // 0 expense
+        "categories": [
+          {
+            "categoryId": "category_id_3",
+            "categoryName": "Rent",
+            "type": 0,  // Expense
+            "count": 1,
+            "totalAmount": -1200
+          },
+          {
+            "categoryId": "category_id_4",
+            "categoryName": "Groceries",
+            "type": 0,  // Expense
+            "count": 3,
+            "totalAmount": -300
+          }
+        ]
+      }
 
 --------------------------------------------------------------------------------------
 /api/get_income
